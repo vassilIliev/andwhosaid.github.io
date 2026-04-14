@@ -1,0 +1,52 @@
+:root {
+  /* Colors — from Figma variables */
+  --color-dark: #191a23;
+  --color-black: #000000;
+  --color-grey: #f3f3f3;
+  --color-green: #b9ff66;
+  --color-pink: #ff3d8b;
+  --color-white: #ffffff;
+
+  /* Semantic */
+  --color-bg: var(--color-white);
+  --color-text: var(--color-dark);
+  --color-text-muted: #6b6b6b;
+  --color-accent: var(--color-pink);
+
+  /* Typography — Space Grotesk */
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+  --fs-h1: clamp(2.25rem, 6vw, 4.5rem);
+  --fs-h2: clamp(1.5rem, 3vw, 2rem);
+  --fs-h3: clamp(1.125rem, 1.75vw, 1.375rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  --lh-tight: 1;
+  --lh-body: 1.45;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 36px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 10px;
+  --space-4: 14px;
+  --space-5: 18px;
+  --space-6: 24px;
+  --space-8: 36px;
+  --space-10: 52px;
+  --space-12: 72px;
+  --space-16: 100px;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-padding: clamp(1rem, 3vw, 2rem);
+
+  /* Shadows */
+  --shadow-card: 0 4px 0 0 var(--color-dark);
+}

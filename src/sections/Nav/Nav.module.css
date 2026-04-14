@@ -1,0 +1,164 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-white);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 36px;
+  width: auto;
+}
+
+.brandText {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.menu {
+  display: flex;
+  gap: var(--space-6);
+  font-size: var(--fs-body);
+}
+
+.menu a {
+  transition: color 120ms ease;
+  padding: var(--space-2) 0;
+}
+
+.menu a:hover {
+  color: var(--color-pink);
+}
+
+.cta {
+  background: var(--color-pink);
+  color: var(--color-white);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: transform 120ms ease, background 120ms ease;
+  white-space: nowrap;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+/* Burger — hidden by default, shown on mobile */
+.burger {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.burgerLine {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-dark);
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.burgerLineOpen1 {
+  transform: translateY(7px) rotate(45deg);
+}
+.burgerLineOpen2 {
+  opacity: 0;
+}
+.burgerLineOpen3 {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Drawer — mobile menu panel */
+.drawer {
+  display: none;
+  position: fixed;
+  top: 86px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-white);
+  padding: var(--space-6) var(--container-padding);
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 240ms ease, opacity 240ms ease;
+  overflow-y: auto;
+}
+
+.drawer nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.drawer a {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: var(--space-3) 0;
+}
+
+.drawerCta {
+  background: var(--color-pink) !important;
+  color: var(--color-white);
+  padding: 16px 26px !important;
+  border-radius: 14px;
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+.drawerOpen {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 860px) {
+  .menu,
+  .cta {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+  .brandText {
+    font-size: 1rem;
+  }
+  .drawer {
+    display: block;
+  }
+}
+
+@media (max-width: 420px) {
+  .brandText {
+    display: none;
+  }
+}

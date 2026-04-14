@@ -1,0 +1,145 @@
+/* Figma frame reference: 1440 × ~900 hero region
+   Wordmark: 792 × 509 at x=48, y=168 (55% of frame width)
+   Youth image: 598 × 822 at x=888, y=124 (41% of frame width)
+   Dot grid: 300 × 300 behind image (top-right)
+   Yellow squiggle: 1499 × 474 at y=613 (full-width decoration)
+*/
+
+.hero {
+  position: relative;
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
+  overflow: hidden;
+}
+
+.squiggle {
+  position: absolute;
+  left: -2%;
+  top: 56%;
+  width: 104%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-areas:
+    'wordmark visual'
+    'copy     visual';
+  gap: var(--space-5) var(--space-6);
+  align-items: start;
+}
+
+.wordmarkWrap {
+  grid-area: wordmark;
+  padding-top: var(--space-4);
+}
+
+.wordmark {
+  width: 100%;
+  max-width: 660px;
+  height: auto;
+  display: block;
+}
+
+.visual {
+  position: relative;
+  grid-area: visual;
+  aspect-ratio: 598 / 822;
+  max-height: 640px;
+  justify-self: end;
+  width: 100%;
+  max-width: 420px;
+}
+
+.dotGrid {
+  position: absolute;
+  right: 4%;
+  top: 6%;
+  width: 62%;
+  aspect-ratio: 1;
+  background-image: radial-gradient(
+    circle,
+    var(--color-dark) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 14px 14px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.visualImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.copy {
+  grid-area: copy;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  align-items: flex-start;
+  max-width: 560px;
+  margin-top: var(--space-2);
+}
+
+.lede {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+.cta {
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: 13px 24px;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--color-pink);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'wordmark'
+      'visual'
+      'copy';
+    gap: var(--space-5);
+  }
+  .visual {
+    max-width: 360px;
+    justify-self: center;
+  }
+  .squiggle {
+    top: 45%;
+  }
+}
+
+@media (max-width: 560px) {
+  .copy {
+    align-items: stretch;
+  }
+  .cta {
+    text-align: center;
+  }
+}
