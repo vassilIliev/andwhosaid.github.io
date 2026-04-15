@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import type React from 'react';
 import styles from './Nav.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -6,6 +7,14 @@ const BASE = import.meta.env.BASE_URL;
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+
+  const scrollToId = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    close();
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -33,12 +42,12 @@ export default function Nav() {
         </a>
 
         <nav className={styles.menu} aria-label="Главна навигация">
-          <a href="#services">Услуги</a>
-          <a href="#about">За нас</a>
-          <a href="#contact">Контакти</a>
+          <a href="#services" onClick={scrollToId('services')}>Услуги</a>
+          <a href="#about" onClick={scrollToId('about')}>За нас</a>
+          <a href="#contact" onClick={scrollToId('contact')}>Контакти</a>
         </nav>
 
-        <a href="#contact" className={styles.cta}>
+        <a href="#contact" className={styles.cta} onClick={scrollToId('contact')}>
           Направи запитване
         </a>
 
@@ -62,10 +71,10 @@ export default function Nav() {
         aria-hidden={!open}
       >
         <nav aria-label="Мобилна навигация">
-          <a href="#services" onClick={close}>Услуги</a>
-          <a href="#about" onClick={close}>За нас</a>
-          <a href="#contact" onClick={close}>Контакти</a>
-          <a href="#contact" className={styles.drawerCta} onClick={close}>
+          <a href="#services" onClick={scrollToId('services')}>Услуги</a>
+          <a href="#about" onClick={scrollToId('about')}>За нас</a>
+          <a href="#contact" onClick={scrollToId('contact')}>Контакти</a>
+          <a href="#contact" className={styles.drawerCta} onClick={scrollToId('contact')}>
             Направи запитване
           </a>
         </nav>

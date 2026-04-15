@@ -1,7 +1,20 @@
 .star {
   position: absolute;
+  width: var(--star-size, 36px);
   height: auto;
   pointer-events: none;
   user-select: none;
   z-index: 0;
+}
+
+@media (max-width: 860px) {
+  .star {
+    width: calc(var(--star-size, 36px) * 0.65);
+  }
+}
+
+@media (max-width: 480px) {
+  .star {
+    width: calc(var(--star-size, 36px) * 0.5);
+  }
 }

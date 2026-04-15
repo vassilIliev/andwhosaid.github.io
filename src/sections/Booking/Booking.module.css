@@ -1,6 +1,7 @@
 .booking {
   position: relative;
   padding: var(--space-10) 0 var(--space-12);
+  overflow: hidden;
 }
 
 .inner {
@@ -90,7 +91,7 @@
   border-radius: 14px;
   padding: 12px 18px;
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.4;
   outline: none;
   transition: box-shadow 120ms ease, border-color 120ms ease;
@@ -205,8 +206,31 @@
     grid-template-columns: 1fr;
     gap: var(--space-6);
     padding: var(--space-8) var(--space-6);
+    border-radius: 28px;
   }
   .divider {
     display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .booking {
+    padding: var(--space-8) 0 var(--space-10);
+  }
+  .card {
+    padding: var(--space-6) var(--space-5);
+    border-radius: 22px;
+    box-shadow: 3px 6px 0 0 var(--color-dark);
+  }
+  .left,
+  .right {
+    gap: var(--space-4);
+  }
+  .submit {
+    width: 100%;
+    text-align: center;
+  }
+  .consent {
+    font-size: 0.75rem;
   }
 }

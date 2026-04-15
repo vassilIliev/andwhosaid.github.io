@@ -14,8 +14,11 @@ export function useHashRoute(): Route {
 
   useEffect(() => {
     const onChange = () => {
-      setRoute(parse(window.location.hash));
-      window.scrollTo(0, 0);
+      const next = parse(window.location.hash);
+      setRoute((prev) => {
+        if (prev !== next) window.scrollTo(0, 0);
+        return next;
+      });
     };
     window.addEventListener('hashchange', onChange);
     return () => window.removeEventListener('hashchange', onChange);

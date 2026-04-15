@@ -129,19 +129,37 @@
     gap: var(--space-5);
   }
   .visual {
-    max-width: 360px;
+    grid-row: auto;
+    max-width: 320px;
+    max-height: 520px;
     justify-self: center;
   }
   .squiggle {
-    top: 45%;
+    top: 42%;
   }
 }
 
 @media (max-width: 560px) {
+  .hero {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-6);
+  }
+  .wordmarkWrap {
+    padding-top: 0;
+  }
+  .visual {
+    max-width: 260px;
+  }
   .copy {
     align-items: stretch;
+    max-width: 100%;
   }
   .cta {
     text-align: center;
+    width: 100%;
+    padding: 14px 20px;
+  }
+  .lede {
+    font-size: 1rem;
   }
 }

@@ -1,6 +1,7 @@
 .location {
   position: relative;
   padding: var(--space-10) 0;
+  overflow: hidden;
 }
 
 .inner {
@@ -170,17 +171,23 @@
     grid-template-columns: 1fr;
     min-height: auto;
     padding-right: 0;
+    border-radius: 28px;
   }
   .imageWrap {
     padding: var(--space-5);
   }
   .image {
     width: 100%;
+    min-height: 220px;
+    max-height: 300px;
     margin: 0;
   }
   .content {
     padding: var(--space-6);
     grid-template-columns: 1fr;
+  }
+  .column {
+    gap: var(--space-5);
   }
   .rail {
     display: none;
@@ -193,8 +200,30 @@
   }
 }
 
-@media (max-width: 480px) {
-  .badge {
-    font-size: 1.375rem;
+@media (max-width: 520px) {
+  .location {
+    padding: var(--space-8) 0;
+  }
+  .headerLink {
+    font-size: 1rem;
+  }
+  .card {
+    border-radius: 24px;
+  }
+  .imageWrap {
+    padding: var(--space-4);
+  }
+  .image {
+    min-height: 180px;
+    max-height: 240px;
+  }
+  .content {
+    padding: var(--space-5);
+  }
+  .paragraph {
+    font-size: 0.875rem;
+  }
+  .inlineLink {
+    font-size: 0.875rem;
   }
 }
