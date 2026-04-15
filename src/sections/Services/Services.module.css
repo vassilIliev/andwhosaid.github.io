@@ -219,9 +219,17 @@
 }
 
 @media (max-width: 900px) {
-  .dotGridLarge,
+  .dotGridLarge {
+    top: 2%;
+    right: -6%;
+    width: 45%;
+    opacity: 0.35;
+  }
   .dotGridSmall {
-    display: none;
+    left: -4%;
+    top: 72%;
+    width: 30%;
+    opacity: 0.35;
   }
 }
 

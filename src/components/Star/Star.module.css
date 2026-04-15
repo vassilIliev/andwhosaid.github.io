@@ -2,19 +2,23 @@
   position: absolute;
   width: var(--star-size, 36px);
   height: auto;
+  aspect-ratio: 61 / 57;
+  display: block;
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  filter: drop-shadow(2px 3px 0 rgba(25, 26, 35, 0.12));
+  will-change: transform;
 }
 
 @media (max-width: 860px) {
   .star {
-    width: calc(var(--star-size, 36px) * 0.65);
+    width: calc(var(--star-size, 36px) * 0.7);
   }
 }
 
 @media (max-width: 480px) {
   .star {
-    width: calc(var(--star-size, 36px) * 0.5);
+    width: calc(var(--star-size, 36px) * 0.55);
   }
 }

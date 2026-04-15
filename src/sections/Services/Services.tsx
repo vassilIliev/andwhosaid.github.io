@@ -83,12 +83,11 @@ const cards: Card[] = [
 export default function Services() {
   return (
     <section className={styles.services} id="services">
-      <Star top="4%" left="-1%" size={60} rotate={-15} />
-      <Star top="33%" left="46%" size={47} rotate={-8} />
-      <Star top="52%" left="50%" size={19} rotate={12} />
-      <Star top="62%" left="49%" size={45} rotate={-5} />
-      <Star top="80%" left="48%" size={19} rotate={18} />
-      <Star bottom="-2%" right="2%" size={110} rotate={-20} />
+      <Star top="3%" left="3%" size={52} rotate={-15} />
+      <Star top="22%" right="4%" size={34} rotate={10} />
+      <Star top="48%" left="48%" size={22} rotate={12} />
+      <Star top="66%" right="5%" size={44} rotate={-5} />
+      <Star bottom="4%" left="4%" size={70} rotate={-18} />
       <div className={`${styles.dotGridLarge}`} aria-hidden="true" />
       <div className={`${styles.dotGridSmall}`} aria-hidden="true" />
       <div className={styles.inner}>

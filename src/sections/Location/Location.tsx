@@ -6,9 +6,9 @@ const BASE = import.meta.env.BASE_URL;
 export default function Location() {
   return (
     <section className={styles.location} id="about">
-      <Star top="-6%" left="0%" size={50} rotate={-12} />
-      <Star top="2%" left="1%" size={24} rotate={10} />
-      <Star top="52%" left="38%" size={17} rotate={-8} />
+      <Star top="4%" left="3%" size={54} rotate={-12} />
+      <Star top="14%" left="42%" size={22} rotate={10} />
+      <Star bottom="8%" right="4%" size={40} rotate={-6} />
       <div className={`container ${styles.inner}`}>
         <header className={styles.header}>
           <span className={styles.badge}>Локация? Локация. Локация!</span>

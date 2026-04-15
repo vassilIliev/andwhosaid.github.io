@@ -6,14 +6,18 @@ const BASE = import.meta.env.BASE_URL;
 export default function Hero() {
   return (
     <section className={styles.hero} id="top">
+      <div className={styles.bgDotsTopLeft} aria-hidden="true" />
+      <div className={styles.bgDotsBottomRight} aria-hidden="true" />
       <img
         src={`${BASE}assets/picture-assets/squiggle-yellow.svg`}
         alt=""
         className={styles.squiggle}
         aria-hidden="true"
       />
-      <Star top="18%" right="-4%" size={180} rotate={-12} />
-      <Star bottom="0%" left="0.5%" size={76} rotate={8} />
+      <Star top="14%" right="2%" size={140} rotate={-12} />
+      <Star top="8%" left="46%" size={22} rotate={14} />
+      <Star bottom="18%" left="2%" size={64} rotate={8} />
+      <Star bottom="6%" right="14%" size={28} rotate={-6} />
 
       <div className={`container ${styles.inner}`}>
         <div className={styles.wordmarkWrap}>

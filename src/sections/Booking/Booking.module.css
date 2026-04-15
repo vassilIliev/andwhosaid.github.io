@@ -4,6 +4,23 @@
   overflow: hidden;
 }
 
+.bgDots {
+  position: absolute;
+  top: 4%;
+  right: -12%;
+  width: 45%;
+  aspect-ratio: 1;
+  background-image: radial-gradient(
+    circle,
+    var(--color-dark) 1.4px,
+    transparent 1.6px
+  );
+  background-size: 14px 14px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .inner {
   position: relative;
   z-index: 1;

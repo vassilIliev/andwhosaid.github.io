@@ -15,8 +15,10 @@ export default function Booking() {
 
   return (
     <section className={styles.booking} id="contact">
-      <Star top="-3%" left="2%" size={90} rotate={-10} />
-      <Star top="1%" left="46%" size={26} rotate={8} />
+      <div className={styles.bgDots} aria-hidden="true" />
+      <Star top="4%" left="3%" size={58} rotate={-10} />
+      <Star top="2%" right="6%" size={26} rotate={8} />
+      <Star bottom="6%" right="3%" size={42} rotate={-14} />
 
       <div className={styles.inner}>
         <header className={styles.header}>
