@@ -145,7 +145,7 @@ export default function Booking() {
             )}
             {status === 'error' && (
               <p className={styles.statusErr}>
-                Нещо се обърка. Опитай отново или ни звънни директно.
+                Нещо се обърка. Опитай отново или ни звънни директно - 0885449203.
               </p>
             )}
           </div>

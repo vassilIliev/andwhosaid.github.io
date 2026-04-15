@@ -32,7 +32,7 @@ export default function Hero() {
           <div className={styles.dotGrid} aria-hidden="true" />
           <video
             className={styles.visualVideo}
-            src={`${BASE}assets/hero_video.mov`}
+            src={`${BASE}assets/hero_video.mp4`}
             poster={`${BASE}assets/picture-assets/hero-youth-blob.png`}
             autoPlay
             muted
