@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Star from '../../components/Star/Star';
 import styles from './Booking.module.css';
 
@@ -7,19 +7,11 @@ const guestRanges = ['до 50', '50 – 100', '100 – 150', '150 – 200', '200
 const WORKER_URL = 'https://andwhosaid-mailer.vassil-iliev-97.workers.dev'
 
 const todayIso = () => new Date().toISOString().slice(0, 10);
-const COOLDOWN_SECONDS = 5;
 
 export default function Booking() {
   const [selected, setSelected] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [servicesError, setServicesError] = useState(false);
-  const [cooldown, setCooldown] = useState(0);
-
-  useEffect(() => {
-    if (cooldown <= 0) return;
-    const id = window.setTimeout(() => setCooldown((c) => c - 1), 1000);
-    return () => window.clearTimeout(id);
-  }, [cooldown]);
 
   const toggle = (svc: string) => {
     setSelected((prev) => {
@@ -31,7 +23,7 @@ export default function Booking() {
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      if (cooldown > 0 || status === 'sending') return;
+      if (status === 'sending') return;
       const form = e.currentTarget;
 
       if (selected.length === 0) {
@@ -60,12 +52,10 @@ export default function Booking() {
         });
         if (!res.ok) throw new Error(await res.text());
         setStatus("sent");
-        setCooldown(COOLDOWN_SECONDS);
         form.reset();
         setSelected([]);
       } catch {
         setStatus("error");
-        setCooldown(COOLDOWN_SECONDS);
       }
     };
   return (
@@ -163,13 +153,9 @@ export default function Booking() {
             <button
               type="submit"
               className={styles.submit}
-              disabled={status === 'sending' || cooldown > 0}
+              disabled={status === 'sending'}
             >
-              {status === 'sending'
-                ? 'ИЗПРАЩАНЕ…'
-                : cooldown > 0
-                ? `ИЗЧАКАЙ ${cooldown}s`
-                : 'НАПРАВИ ЗАПИТВАНЕ'}
+              {status === 'sending' ? 'ИЗПРАЩАНЕ…' : 'НАПРАВИ ЗАПИТВАНЕ'}
             </button>
 
             {status === 'sent' && (
