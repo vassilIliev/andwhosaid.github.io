@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/VasilIliev/OneDrive - Digital Lights Ltd/Desktop/PROJECTS/andWhoSaid/.claude/**)",
+      "Read(//c/Users/VasilIliev/OneDrive - Digital Lights Ltd/Desktop/PROJECTS/andWhoSaid/**)",
+      "mcp__figma__get_design_context",
+      "Bash(mkdir -p \"/c/Users/VasilIliev/OneDrive - Digital Lights Ltd/Desktop/PROJECTS/andWhoSaid/.claude/figma-cache\")",
+      "Bash(cp \"/c/Users/VasilIliev/.claude/projects/C--Users-VasilIliev-OneDrive---Digital-Lights-Ltd-Desktop-PROJECTS-andWhoSaid-src-sections-Hero/c66dfb12-e619-4a72-af68-65e9b6054360/tool-results/mcp-figma-get_design_context-1776285518466.txt\" \"/c/Users/VasilIliev/OneDrive - Digital Lights Ltd/Desktop/PROJECTS/andWhoSaid/.claude/figma-cache/landing-93-88.json\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\('/c/Users/VasilIliev/OneDrive - Digital Lights Ltd/Desktop/PROJECTS/andWhoSaid/.claude/figma-cache/landing-93-88.json'\\)\\); print\\(type\\(d\\), len\\(d\\)\\); print\\([x.get\\('type'\\) for x in d[:20]]\\)\")",
+      "Bash(python *)",
+      "mcp__figma__get_screenshot",
+      "Bash(curl -sSL -o public/assets/picture-assets/photographer-blob.svg \"https://www.figma.com/api/mcp/asset/c4607642-9b0e-4576-af0b-f6791cdedf2b\")",
+      "Bash(curl -sSL -o public/assets/picture-assets/nomo-watermark.svg \"https://www.figma.com/api/mcp/asset/51c34f27-a9d3-4252-b047-28ea3aa86b1f\")",
+      "Bash(npm run *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

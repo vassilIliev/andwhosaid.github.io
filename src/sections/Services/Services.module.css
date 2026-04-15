@@ -184,6 +184,23 @@
   z-index: 1;
 }
 
+.cardImage_photographer {
+  width: 58%;
+  max-width: 320px;
+  max-height: 104%;
+  right: 2%;
+  transform: translateY(-50%) rotate(-10deg);
+  filter: brightness(0);
+}
+
+.cardImage_videographer {
+  width: 58%;
+  max-width: 320px;
+  max-height: 104%;
+  right: 2%;
+  transform: translateY(-50%) rotate(-8deg);
+}
+
 .dotGridLarge {
   position: absolute;
   right: 3%;

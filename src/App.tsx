@@ -4,8 +4,8 @@ import Photographer from './pages/Photographer';
 import Videographer from './pages/Videographer';
 
 export default function App() {
-  const route = useHashRoute();
+  const { route, anchor } = useHashRoute();
   if (route === 'photographer') return <Photographer />;
   if (route === 'videographer') return <Videographer />;
-  return <Home />;
+  return <Home anchor={anchor} />;
 }

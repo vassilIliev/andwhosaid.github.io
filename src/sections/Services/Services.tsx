@@ -122,7 +122,7 @@ export default function Services() {
               <img
                 src={`${BASE}assets/picture-assets/${card.image}`}
                 alt={card.imageAlt}
-                className={styles.cardImage}
+                className={`${styles.cardImage} ${styles[`cardImage_${card.id}`] ?? ''}`}
                 loading="lazy"
               />
             </article>

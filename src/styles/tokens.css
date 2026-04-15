@@ -14,8 +14,9 @@
   --color-text-muted: #6b6b6b;
   --color-accent: var(--color-pink);
 
-  /* Typography — Space Grotesk */
-  --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  /* Typography — Manrope for body/headings, Space Grotesk for accent labels */
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-accent: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 
   --fs-h1: clamp(2rem, 5vw, 3.5rem);
   --fs-h2: clamp(1.25rem, 2.5vw, 1.75rem);

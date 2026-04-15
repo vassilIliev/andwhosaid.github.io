@@ -64,7 +64,7 @@ export default function BioPage({
               </p>
             ))}
             <blockquote className={styles.quote}>{quote}</blockquote>
-            <a href="#contact" className={styles.cta}>
+            <a href="#/contact" className={styles.cta}>
               НАПРАВИ ЗАПИТВАНЕ
             </a>
           </div>

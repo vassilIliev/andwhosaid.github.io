@@ -8,12 +8,17 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
-  const scrollToId = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const el = document.getElementById(id);
-    if (!el) return;
+  const goToSection = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     close();
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const targetHash = `#/${id}`;
+    if (window.location.hash === targetHash) {
+      // Already on this anchor — re-trigger scroll manually since hashchange won't fire.
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.location.hash = `/${id}`;
+    }
   };
 
   useEffect(() => {
@@ -30,7 +35,7 @@ export default function Nav() {
   return (
     <header className={styles.nav}>
       <div className={`container ${styles.inner}`}>
-        <a href="#top" className={styles.brand} aria-label="&WhoSaid — начало" onClick={close}>
+        <a href="#/" className={styles.brand} aria-label="&WhoSaid — начало" onClick={goToSection('top')}>
           <img
             src={`${BASE}assets/picture-assets/12! logo.png`}
             alt=""
@@ -42,12 +47,12 @@ export default function Nav() {
         </a>
 
         <nav className={styles.menu} aria-label="Главна навигация">
-          <a href="#services" onClick={scrollToId('services')}>Услуги</a>
-          <a href="#about" onClick={scrollToId('about')}>За нас</a>
-          <a href="#contact" onClick={scrollToId('contact')}>Контакти</a>
+          <a href="#/services" onClick={goToSection('services')}>Услуги</a>
+          <a href="#/about" onClick={goToSection('about')}>За нас</a>
+          <a href="#/contact" onClick={goToSection('contact')}>Контакти</a>
         </nav>
 
-        <a href="#contact" className={styles.cta} onClick={scrollToId('contact')}>
+        <a href="#/contact" className={styles.cta} onClick={goToSection('contact')}>
           Направи запитване
         </a>
 
@@ -71,10 +76,10 @@ export default function Nav() {
         aria-hidden={!open}
       >
         <nav aria-label="Мобилна навигация">
-          <a href="#services" onClick={scrollToId('services')}>Услуги</a>
-          <a href="#about" onClick={scrollToId('about')}>За нас</a>
-          <a href="#contact" onClick={scrollToId('contact')}>Контакти</a>
-          <a href="#contact" className={styles.drawerCta} onClick={scrollToId('contact')}>
+          <a href="#/services" onClick={goToSection('services')}>Услуги</a>
+          <a href="#/about" onClick={goToSection('about')}>За нас</a>
+          <a href="#/contact" onClick={goToSection('contact')}>Контакти</a>
+          <a href="#/contact" className={styles.drawerCta} onClick={goToSection('contact')}>
             Направи запитване
           </a>
         </nav>
