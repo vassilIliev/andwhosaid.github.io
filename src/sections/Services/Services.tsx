@@ -1,3 +1,4 @@
+import Star from '../../components/Star/Star';
 import styles from './Services.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -14,6 +15,7 @@ type Card = {
   imageAlt: string;
   href?: string;
   learnMore?: boolean;
+  whitePill?: boolean;
 };
 
 const cards: Card[] = [
@@ -28,10 +30,10 @@ const cards: Card[] = [
   },
   {
     id: 'kitchen',
-    theme: 'green',
+    theme: 'pink',
     accent: 'кухня',
     title: 'Да Си Оближеш Пръстите',
-    body: 'Защото сладко след сладко не е завършек.',
+    body: 'Защото гладна мечка, училище не завършва.',
     image: 'tigan.png',
     imageAlt: 'Тиган',
   },
@@ -39,23 +41,23 @@ const cards: Card[] = [
     id: 'dj',
     theme: 'dark',
     accent: 'музика',
-    title: 'DJ, Който Да Те Разцепи',
-    body: 'Така ден трябва да звучи — много, много, много.',
+    title: 'DJ, Който Да Те Разцепи От Танци',
+    body: 'Така ден трябва да звучи — много, много, много… много добре.',
     image: 'dj.png',
     imageAlt: 'DJ плоча',
   },
   {
     id: 'decor',
-    theme: 'pink',
+    theme: 'light',
     accent: 'атмосфера',
     title: 'Декорация',
-    body: 'Нека залата да изглежда толкова специално, колкото фантазията ти може да измисли.',
+    body: 'Нека твоят ден изглежда толкова специално, колкото фантазията ти може да измисли.',
     image: 'балон.png',
     imageAlt: 'Балон',
   },
   {
     id: 'photographer',
-    theme: 'pink',
+    theme: 'light',
     accent: 'спомени',
     title: 'Фотограф',
     body: 'Твоят най-добър профил, твоят най-добър кадър, всички заснети от Георги Сиркатов.',
@@ -66,7 +68,7 @@ const cards: Card[] = [
   },
   {
     id: 'videographer',
-    theme: 'dark',
+    theme: 'pink',
     accent: 'видео',
     title: 'Видеограф',
     body: 'Тази история трябва да е преживяна и показана за поколения след.',
@@ -74,15 +76,24 @@ const cards: Card[] = [
     imageAlt: 'Видео',
     href: '#/videographer',
     learnMore: true,
+    whitePill: true,
   },
 ];
 
 export default function Services() {
   return (
     <section className={styles.services} id="services">
-      <div className={`container ${styles.inner}`}>
+      <Star top="4%" left="-1%" size={60} rotate={-15} />
+      <Star top="33%" left="46%" size={47} rotate={-8} />
+      <Star top="52%" left="50%" size={19} rotate={12} />
+      <Star top="62%" left="49%" size={45} rotate={-5} />
+      <Star top="80%" left="48%" size={19} rotate={18} />
+      <Star bottom="-2%" right="2%" size={110} rotate={-20} />
+      <div className={`${styles.dotGridLarge}`} aria-hidden="true" />
+      <div className={`${styles.dotGridSmall}`} aria-hidden="true" />
+      <div className={styles.inner}>
         <header className={styles.header}>
-          <span className={styles.badge}>Услуги</span>
+          <span className={styles.badge}>От Какво Има Нужда Един Бал?</span>
           <p className={styles.tagline}>
             Услугите, които биха направили твоят ден специален и незабравим.
           </p>
@@ -96,7 +107,11 @@ export default function Services() {
             >
               <p className={styles.accent}>{card.accent}</p>
               <h3 className={styles.title}>
-                <span className={styles.titleLabel}>{card.title}</span>
+                <span
+                  className={`${styles.titleLabel} ${card.whitePill ? styles.titleLabelWhite : ''}`}
+                >
+                  {card.title}
+                </span>
               </h3>
               <p className={styles.body}>{card.body}</p>
               {card.learnMore && (

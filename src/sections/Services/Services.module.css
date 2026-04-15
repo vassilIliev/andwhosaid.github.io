@@ -1,11 +1,18 @@
 .services {
-  padding: var(--space-12) 0;
+  position: relative;
+  padding: var(--space-10) 0;
 }
 
 .inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-6);
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
 }
 
 .header {
@@ -17,13 +24,13 @@
 
 .badge {
   display: inline-block;
-  background: var(--color-green);
-  color: var(--color-dark);
-  padding: 2px 10px;
-  border-radius: 6px;
-  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  background: var(--color-pink);
+  color: var(--color-white);
+  padding: 4px 14px;
+  border-radius: 8px;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .tagline {
@@ -38,17 +45,17 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
+  gap: 32px;
 }
 
 .card {
   position: relative;
   border: 1px solid var(--color-dark);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-card);
-  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-6);
-  aspect-ratio: 600 / 297;
-  min-height: 230px;
+  border-radius: 38px;
+  box-shadow: 0 5px 0 0 var(--color-dark);
+  padding: var(--space-5) var(--space-6);
+  aspect-ratio: 600 / 305;
+  min-height: 180px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -74,7 +81,7 @@
 }
 
 .accent {
-  font-size: 0.95rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   text-transform: lowercase;
   letter-spacing: 0.01em;
@@ -85,19 +92,21 @@
 .title {
   margin: 0;
   z-index: 2;
-  line-height: 0;
+  max-width: 52%;
+  line-height: 1.35;
 }
 
 .titleLabel {
-  display: inline-block;
+  display: inline;
   background: var(--color-pink);
   color: var(--color-white);
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: clamp(1.125rem, 1.9vw, 1.5rem);
+  padding: 2px 8px;
+  border-radius: 7px;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
-  line-height: 1.2;
-  max-width: 60%;
+  line-height: 1.45;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .theme_pink .titleLabel {
@@ -113,9 +122,15 @@
   color: var(--color-dark);
 }
 
+.titleLabelWhite,
+.theme_pink .titleLabelWhite {
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
 .body {
-  max-width: 60%;
-  font-size: 0.875rem;
+  max-width: 52%;
+  font-size: 0.8125rem;
   line-height: 1.45;
   z-index: 2;
   margin: 0;
@@ -156,16 +171,57 @@
 
 .cardImage {
   position: absolute;
-  right: 6%;
+  right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  width: 36%;
-  max-width: 210px;
+  width: 44%;
+  max-width: 260px;
   height: auto;
-  max-height: 80%;
+  max-height: 92%;
   object-fit: contain;
   pointer-events: none;
   z-index: 1;
+}
+
+.dotGridLarge {
+  position: absolute;
+  right: 3%;
+  top: 22%;
+  width: 20%;
+  aspect-ratio: 1;
+  background-image: radial-gradient(
+    circle,
+    var(--color-dark) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 14px 14px;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dotGridSmall {
+  position: absolute;
+  left: 3%;
+  top: 60%;
+  width: 7%;
+  aspect-ratio: 1;
+  background-image: radial-gradient(
+    circle,
+    var(--color-dark) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 12px 12px;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  .dotGridLarge,
+  .dotGridSmall {
+    display: none;
+  }
 }
 
 @media (max-width: 860px) {

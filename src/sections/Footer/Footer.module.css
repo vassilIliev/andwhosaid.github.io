@@ -1,0 +1,93 @@
+.footer {
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: var(--space-10) 0 var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.brand {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-weight: 900;
+  color: var(--color-pink);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.block {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-white);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.value {
+  font-size: 0.9375rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+a.value:hover,
+a.value:focus-visible {
+  color: var(--color-pink);
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.85);
+  align-self: center;
+}
+
+@media (max-width: 720px) {
+  .row {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+  .copyright {
+    align-self: flex-start;
+  }
+}

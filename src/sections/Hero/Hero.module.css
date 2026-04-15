@@ -15,7 +15,7 @@
 .squiggle {
   position: absolute;
   left: -2%;
-  top: 56%;
+  top: 64%;
   width: 104%;
   height: auto;
   pointer-events: none;
@@ -43,7 +43,7 @@
 
 .wordmark {
   width: 100%;
-  max-width: 660px;
+  max-width: 620px;
   height: auto;
   display: block;
 }
@@ -51,11 +51,13 @@
 .visual {
   position: relative;
   grid-area: visual;
+  grid-row: 1 / span 2;
   aspect-ratio: 598 / 822;
-  max-height: 640px;
+  max-height: 720px;
   justify-self: end;
+  align-self: stretch;
   width: 100%;
-  max-width: 420px;
+  max-width: 460px;
 }
 
 .dotGrid {

@@ -1,3 +1,4 @@
+import Star from '../../components/Star/Star';
 import styles from './Hero.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -11,6 +12,8 @@ export default function Hero() {
         className={styles.squiggle}
         aria-hidden="true"
       />
+      <Star top="18%" right="-4%" size={180} rotate={-12} />
+      <Star bottom="0%" left="0.5%" size={76} rotate={8} />
 
       <div className={`container ${styles.inner}`}>
         <div className={styles.wordmarkWrap}>

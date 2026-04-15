@@ -1,0 +1,7 @@
+.star {
+  position: absolute;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}

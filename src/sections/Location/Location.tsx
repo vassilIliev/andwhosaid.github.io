@@ -1,3 +1,4 @@
+import Star from '../../components/Star/Star';
 import styles from './Location.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -5,6 +6,9 @@ const BASE = import.meta.env.BASE_URL;
 export default function Location() {
   return (
     <section className={styles.location} id="about">
+      <Star top="-6%" left="0%" size={50} rotate={-12} />
+      <Star top="2%" left="1%" size={24} rotate={10} />
+      <Star top="52%" left="38%" size={17} rotate={-8} />
       <div className={`container ${styles.inner}`}>
         <header className={styles.header}>
           <span className={styles.badge}>Локация? Локация. Локация!</span>
@@ -14,12 +18,14 @@ export default function Location() {
         </header>
 
         <div className={styles.card}>
-          <img
-            src={`${BASE}assets/location/cathedral-blob.png`}
-            alt="Храм-паметник Свети Александър Невски, София"
-            className={styles.image}
-            loading="lazy"
-          />
+          <div className={styles.imageWrap}>
+            <img
+              src={`${BASE}assets/location/alf-redo-A9dNADohsBk-unsplash.jpg`}
+              alt="Храм-паметник Свети Александър Невски, София"
+              className={styles.image}
+              loading="lazy"
+            />
+          </div>
 
           <div className={styles.content}>
             <div className={styles.rail} aria-hidden="true">
