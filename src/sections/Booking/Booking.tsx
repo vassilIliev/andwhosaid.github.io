@@ -4,15 +4,47 @@ import styles from './Booking.module.css';
 
 const services = ['Кухня', 'DJ', 'Декорация', 'Фотограф', 'Видеограф'] as const;
 const guestRanges = ['до 50', '50 – 100', '100 – 150', '150 – 200', '200+'];
+const WORKER_URL = 'https://andwhosaid-mailer.vassil-iliev-97.workers.dev'
 
 export default function Booking() {
   const [selected, setSelected] = useState<string[]>([]);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const toggle = (svc: string) =>
     setSelected((prev) =>
       prev.includes(svc) ? prev.filter((s) => s !== svc) : [...prev, svc],
     );
 
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const fd = new FormData(form);
+      const payload = {
+        name: fd.get("name"),
+        phone: fd.get("phone"),
+        email: fd.get("email"),
+        date: fd.get("date"),
+        guests: fd.get("guests"),
+        services: selected,            // existing state from the checkboxes
+        details: fd.get("details"),
+        website: fd.get("website"),    // honeypot
+      };
+    
+      setStatus("sending");
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(await res.text());
+        setStatus("sent");
+        form.reset();
+        setSelected([]);
+      } catch {
+        setStatus("error");
+      }
+    };
   return (
     <section className={styles.booking} id="contact">
       <div className={styles.bgDots} aria-hidden="true" />
@@ -29,7 +61,7 @@ export default function Booking() {
           </p>
         </header>
 
-        <form className={styles.card} onSubmit={(e) => e.preventDefault()}>
+        <form className={styles.card} onSubmit={onSubmit}>
           <div className={styles.left}>
             <label className={styles.field}>
               <span className={styles.label}>Име и Фамилия</span>
@@ -89,9 +121,33 @@ export default function Booking() {
               </span>
             </label>
 
-            <button type="submit" className={styles.submit}>
-              НАПРАВИ ЗАПИТВАНЕ
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className={styles.honeypot}
+            />
+
+            <button
+              type="submit"
+              className={styles.submit}
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? 'ИЗПРАЩАНЕ…' : 'НАПРАВИ ЗАПИТВАНЕ'}
             </button>
+
+            {status === 'sent' && (
+              <p className={styles.statusOk}>
+                Благодарим! Получихме запитването ти и ще се свържем скоро.
+              </p>
+            )}
+            {status === 'error' && (
+              <p className={styles.statusErr}>
+                Нещо се обърка. Опитай отново или ни звънни директно.
+              </p>
+            )}
           </div>
 
           <div className={styles.divider} aria-hidden="true" />

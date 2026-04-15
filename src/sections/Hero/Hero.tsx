@@ -30,12 +30,16 @@ export default function Hero() {
 
         <div className={styles.visual}>
           <div className={styles.dotGrid} aria-hidden="true" />
-          <img
-            src={`${BASE}assets/picture-assets/hero-youth-blob.png`}
-            alt=""
-            className={styles.visualImg}
-            loading="eager"
-            fetchPriority="high"
+          <video
+            className={styles.visualVideo}
+            src={`${BASE}assets/hero_video.mov`}
+            poster={`${BASE}assets/picture-assets/hero-youth-blob.png`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
           />
         </div>
 
