@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Star from '../../components/Star/Star';
 import styles from './Booking.module.css';
 
@@ -6,18 +6,39 @@ const services = ['Кухня', 'DJ', 'Декорация', 'Фотограф', 
 const guestRanges = ['до 50', '50 – 100', '100 – 150', '150 – 200', '200+'];
 const WORKER_URL = 'https://andwhosaid-mailer.vassil-iliev-97.workers.dev'
 
+const todayIso = () => new Date().toISOString().slice(0, 10);
+const COOLDOWN_SECONDS = 5;
+
 export default function Booking() {
   const [selected, setSelected] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [servicesError, setServicesError] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
 
-  const toggle = (svc: string) =>
-    setSelected((prev) =>
-      prev.includes(svc) ? prev.filter((s) => s !== svc) : [...prev, svc],
-    );
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const id = window.setTimeout(() => setCooldown((c) => c - 1), 1000);
+    return () => window.clearTimeout(id);
+  }, [cooldown]);
+
+  const toggle = (svc: string) => {
+    setSelected((prev) => {
+      const next = prev.includes(svc) ? prev.filter((s) => s !== svc) : [...prev, svc];
+      if (next.length > 0) setServicesError(false);
+      return next;
+    });
+  };
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      if (cooldown > 0 || status === 'sending') return;
       const form = e.currentTarget;
+
+      if (selected.length === 0) {
+        setServicesError(true);
+        return;
+      }
+
       const fd = new FormData(form);
       const payload = {
         name: fd.get("name"),
@@ -29,7 +50,7 @@ export default function Booking() {
         details: fd.get("details"),
         website: fd.get("website"),    // honeypot
       };
-    
+
       setStatus("sending");
       try {
         const res = await fetch(WORKER_URL, {
@@ -39,10 +60,12 @@ export default function Booking() {
         });
         if (!res.ok) throw new Error(await res.text());
         setStatus("sent");
+        setCooldown(COOLDOWN_SECONDS);
         form.reset();
         setSelected([]);
       } catch {
         setStatus("error");
+        setCooldown(COOLDOWN_SECONDS);
       }
     };
   return (
@@ -70,6 +93,8 @@ export default function Booking() {
                 name="name"
                 placeholder="Name and Surname"
                 required
+                maxLength={50}
+                minLength={2}
                 className={styles.input}
               />
             </label>
@@ -81,6 +106,10 @@ export default function Booking() {
                 name="phone"
                 placeholder="+359xxxxxxxx"
                 required
+                maxLength={20}
+                pattern="\+?[0-9\s\-]{6,20}"
+                title="Само цифри и знак +, до 20 символа"
+                inputMode="tel"
                 className={styles.input}
               />
             </label>
@@ -102,6 +131,7 @@ export default function Booking() {
                 type="date"
                 name="date"
                 required
+                min={todayIso()}
                 className={styles.input}
               />
             </label>
@@ -133,14 +163,18 @@ export default function Booking() {
             <button
               type="submit"
               className={styles.submit}
-              disabled={status === 'sending'}
+              disabled={status === 'sending' || cooldown > 0}
             >
-              {status === 'sending' ? 'ИЗПРАЩАНЕ…' : 'НАПРАВИ ЗАПИТВАНЕ'}
+              {status === 'sending'
+                ? 'ИЗПРАЩАНЕ…'
+                : cooldown > 0
+                ? `ИЗЧАКАЙ ${cooldown}s`
+                : 'НАПРАВИ ЗАПИТВАНЕ'}
             </button>
 
             {status === 'sent' && (
               <p className={styles.statusOk}>
-                Благодарим! Получихме запитването ти и ще се свържем скоро.
+                Благодарим! Получихме запитването ти и ще се свържем скоро. Можете и да звъннете на телефон - 0885449203.
               </p>
             )}
             {status === 'error' && (
@@ -173,13 +207,18 @@ export default function Booking() {
                   </label>
                 ))}
               </div>
+              {servicesError && (
+                <p className={styles.fieldError}>
+                  Избери поне една услуга.
+                </p>
+              )}
             </fieldset>
 
             <label className={styles.field}>
               <span className={styles.label}>
                 Колко хора предвиждаш да поканиш?
               </span>
-              <select name="guests" className={styles.input} defaultValue="">
+              <select name="guests" required className={styles.input} defaultValue="">
                 <option value="" disabled>
                   Избери диапазон
                 </option>

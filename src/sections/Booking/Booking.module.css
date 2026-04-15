@@ -40,6 +40,13 @@
   cursor: progress;
 }
 
+.fieldError {
+  margin: 8px 0 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-pink);
+}
+
 .bgDots {
   position: absolute;
   top: 4%;
