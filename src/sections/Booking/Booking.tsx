@@ -236,6 +236,7 @@ export default function Booking() {
                 name="details"
                 placeholder="Additional details"
                 rows={4}
+                maxLength={500}
                 className={`${styles.input} ${styles.textarea}`}
               />
             </label>
