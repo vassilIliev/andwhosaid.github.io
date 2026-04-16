@@ -3,7 +3,7 @@ import Star from '../../components/Star/Star';
 import styles from './Booking.module.css';
 
 const services = ['Кухня', 'DJ', 'Декорация', 'Фотограф', 'Видеограф'] as const;
-const guestRanges = ['до 50', '50 – 100', '100 – 150', '150 – 200', '200+'];
+const guestRanges = ['до 50', '50 – 100', '100 – 150', '150+'];
 const WORKER_URL = 'https://andwhosaid-mailer.vassil-iliev-97.workers.dev'
 
 const todayIso = () => new Date().toISOString().slice(0, 10);
