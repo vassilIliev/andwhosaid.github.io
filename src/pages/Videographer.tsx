@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect } from 'react';
 import Nav from '../sections/Nav/Nav';
 import Footer from '../sections/Footer/Footer';
 import BioPage from '../sections/BioPage/BioPage';
@@ -11,6 +12,9 @@ const gallery = [
 ];
 
 export default function Videographer() {
+  useLayoutEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
     <>
       <Nav />

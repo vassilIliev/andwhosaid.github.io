@@ -21,10 +21,7 @@ export function useHashRoute(): HashState {
   useEffect(() => {
     const onChange = () => {
       const next = parse(window.location.hash);
-      setState((prev) => {
-        if (prev.route !== next.route && !next.anchor) window.scrollTo(0, 0);
-        return next;
-      });
+      setState(next);
     };
     window.addEventListener('hashchange', onChange);
     return () => window.removeEventListener('hashchange', onChange);
