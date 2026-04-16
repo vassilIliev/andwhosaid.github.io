@@ -151,6 +151,8 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
   background: var(--color-white);
   color: var(--color-dark);
   border: 1px solid var(--color-dark);
@@ -171,6 +173,17 @@
   border-color: var(--color-pink);
   box-shadow: 0 0 0 3px rgba(255, 0, 84, 0.18);
   transform: scale(1.01);
+}
+
+.dateInput {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dateInput::-webkit-date-and-time-value {
+  text-align: left;
 }
 
 .textarea {
@@ -320,10 +333,18 @@
     padding: var(--space-6) var(--space-5);
     border-radius: 22px;
     box-shadow: 3px 6px 0 0 var(--color-dark);
+    overflow: hidden;
   }
   .left,
   .right {
     gap: var(--space-4);
+  }
+  .input {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+  .input:focus-visible {
+    transform: none;
   }
   .submit {
     width: 100%;

@@ -138,7 +138,7 @@ export default function Booking() {
                 name="date"
                 required
                 min={todayIso()}
-                className={styles.input}
+                className={`${styles.input} ${styles.dateInput}`}
               />
             </label>
 
