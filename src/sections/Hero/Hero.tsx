@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import Star from '../../components/Star/Star';
+import LazyImage from '../../components/LazyImage/LazyImage';
 import styles from './Hero.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -52,13 +53,12 @@ export default function Hero() {
       <Star bottom="6%" right="14%" size={28} rotate={-6} />
 
       <div className={`container ${styles.inner}`}>
-        <div className={styles.wordmarkWrap}>
-          <img
-            src={`${BASE}assets/picture-assets/Untitled-2.png`}
-            alt="КОЙ КАЗА?!"
-            className={styles.wordmark}
-          />
-        </div>
+        <LazyImage
+          src={`${BASE}assets/picture-assets/Untitled-2.png`}
+          alt="КОЙ КАЗА?!"
+          className={styles.wordmark}
+          wrapperClassName={styles.wordmarkWrap}
+        />
 
         <div className={styles.visual}>
           <div className={styles.dotGrid} aria-hidden="true" />
@@ -72,10 +72,11 @@ export default function Hero() {
           )}
 
           {videoState === 'failed' && (
-            <img
+            <LazyImage
               src={`${BASE}assets/picture-assets/hero-youth-blob.png`}
               alt="YOUTH"
               className={styles.visualImg}
+              wrapperClassName={styles.visualImgWrap}
             />
           )}
 

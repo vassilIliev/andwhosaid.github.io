@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import Star from '../../components/Star/Star';
+import LazyImage from '../../components/LazyImage/LazyImage';
 import styles from './BioPage.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -57,15 +58,14 @@ export default function BioPage({
         </a>
 
         <div className={styles.hero}>
-          <div className={styles.portraitWrap}>
-            <img
-              src={`${BASE}${portrait.src}`}
-              alt={portrait.alt}
-              className={styles.portrait}
-              loading="eager"
-              fetchPriority="high"
-            />
-          </div>
+          <LazyImage
+            src={`${BASE}${portrait.src}`}
+            alt={portrait.alt}
+            className={styles.portrait}
+            wrapperClassName={styles.portraitWrap}
+            loading="eager"
+            fetchPriority="high"
+          />
 
           <div className={styles.copy}>
             <span className={styles.badge}>{badge}</span>
@@ -116,7 +116,7 @@ export default function BioPage({
                     : ''
                 } ${i % 2 === 1 ? styles.galleryItemDown : ''}`}
               >
-                <img
+                <LazyImage
                   src={`${BASE}${item.src}`}
                   alt={item.alt}
                   loading="lazy"

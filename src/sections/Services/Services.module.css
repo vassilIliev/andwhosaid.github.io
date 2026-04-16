@@ -82,15 +82,15 @@
   box-shadow: 4px 8px 0 0 var(--color-dark);
 }
 
-.cardInView .cardImage {
+.cardInView .cardImageWrap {
   transform: translateY(-50%) scale(1.06) rotate(2deg);
 }
 
-.cardInView .cardImage_photographer {
+.cardInView .cardImageWrap_photographer {
   transform: translateY(-50%) rotate(-6deg) scale(1.08);
 }
 
-.cardInView .cardImage_videographer {
+.cardInView .cardImageWrap_videographer {
   transform: translateY(-50%) rotate(-4deg) scale(1.08);
 }
 
@@ -225,39 +225,47 @@
   color: var(--color-dark);
 }
 
-.cardImage {
+.cardImageWrap {
   position: absolute;
   right: 5%;
   top: 50%;
   transform: translateY(-50%);
   width: 44%;
   max-width: 260px;
-  height: auto;
   max-height: 92%;
-  object-fit: contain;
   pointer-events: none;
   z-index: 1;
   transition: transform 350ms ease;
 }
 
-.card:hover .cardImage {
+.cardImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.card:hover .cardImageWrap {
   transform: translateY(-50%) scale(1.06) rotate(2deg);
 }
 
-.cardImage_photographer {
+.cardImageWrap_photographer {
   width: 75%;
   max-width: 420px;
   max-height: 120%;
   right: -8%;
   transform: translateY(-50%) rotate(-10deg);
+}
+
+.cardImage_photographer {
   filter: brightness(0);
 }
 
-.card:hover .cardImage_photographer {
+.card:hover .cardImageWrap_photographer {
   transform: translateY(-50%) rotate(-6deg) scale(1.08);
 }
 
-.cardImage_videographer {
+.cardImageWrap_videographer {
   width: 75%;
   max-width: 420px;
   max-height: 120%;
@@ -265,7 +273,7 @@
   transform: translateY(-50%) rotate(-8deg);
 }
 
-.card:hover .cardImage_videographer {
+.card:hover .cardImageWrap_videographer {
   transform: translateY(-50%) rotate(-4deg) scale(1.08);
 }
 
@@ -338,13 +346,13 @@
   .body {
     max-width: 66%;
   }
-  .cardImage {
+  .cardImageWrap {
     width: 50%;
     max-width: 260px;
     right: 2%;
   }
-  .cardImage_photographer,
-  .cardImage_videographer {
+  .cardImageWrap_photographer,
+  .cardImageWrap_videographer {
     width: 70%;
     max-width: 360px;
     right: -4%;
@@ -367,12 +375,12 @@
     max-width: 55%;
     font-size: 0.8125rem;
   }
-  .cardImage {
+  .cardImageWrap {
     width: 48%;
     max-width: 200px;
   }
-  .cardImage_photographer,
-  .cardImage_videographer {
+  .cardImageWrap_photographer,
+  .cardImageWrap_videographer {
     width: 67%;
     max-width: 280px;
     right: -4%;
@@ -389,12 +397,12 @@
   .body {
     max-width: 52%;
   }
-  .cardImage {
+  .cardImageWrap {
     width: 44%;
     max-width: 160px;
   }
-  .cardImage_photographer,
-  .cardImage_videographer {
+  .cardImageWrap_photographer,
+  .cardImageWrap_videographer {
     width: 62%;
     max-width: 220px;
     right: -4%;

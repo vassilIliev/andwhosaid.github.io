@@ -97,7 +97,7 @@ export default function Booking() {
               <input
                 type="text"
                 name="name"
-                placeholder="Name and Surname"
+                placeholder="Име и Фамилия"
                 required
                 maxLength={50}
                 minLength={2}
@@ -194,7 +194,7 @@ export default function Booking() {
               <span className={styles.label}>Допълнителни детайли</span>
               <textarea
                 name="details"
-                placeholder="Additional details"
+                placeholder="Допълнителни детайли"
                 rows={4}
                 maxLength={500}
                 className={`${styles.input} ${styles.textarea}`}

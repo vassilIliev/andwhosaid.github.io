@@ -1,4 +1,5 @@
 import Star from '../../components/Star/Star';
+import LazyImage from '../../components/LazyImage/LazyImage';
 import styles from './Location.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -22,14 +23,13 @@ export default function Location() {
         </header>
 
         <div className={styles.card}>
-          <div className={styles.imageWrap}>
-            <img
-              src={`${BASE}assets/location/alf-redo-A9dNADohsBk-unsplash.jpg`}
-              alt="Храм-паметник Свети Александър Невски, София"
-              className={styles.image}
-              loading="lazy"
-            />
-          </div>
+          <LazyImage
+            src={`${BASE}assets/location/alf-redo-A9dNADohsBk-unsplash.jpg`}
+            alt="Храм-паметник Свети Александър Невски, София"
+            className={styles.image}
+            wrapperClassName={styles.imageWrap}
+            loading="lazy"
+          />
 
           <div className={styles.content}>
             <div className={styles.rail} aria-hidden="true">

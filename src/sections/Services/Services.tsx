@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import Star from '../../components/Star/Star';
+import LazyImage from '../../components/LazyImage/LazyImage';
 import styles from './Services.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -147,10 +148,11 @@ export default function Services() {
                     Научи повече
                   </span>
                 )}
-                <img
+                <LazyImage
                   src={`${BASE}assets/picture-assets/${card.image}`}
                   alt={card.imageAlt}
                   className={`${styles.cardImage} ${styles[`cardImage_${card.id}`] ?? ''}`}
+                  wrapperClassName={`${styles.cardImageWrap} ${styles[`cardImageWrap_${card.id}`] ?? ''}`}
                   loading="lazy"
                 />
               </Wrapper>
