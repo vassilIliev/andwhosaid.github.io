@@ -26,8 +26,19 @@ export default function Booking() {
       if (status === 'sending') return;
       const form = e.currentTarget;
 
+      const firstInvalid = form.querySelector<HTMLElement>(':invalid:not(fieldset)');
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (firstInvalid instanceof HTMLInputElement || firstInvalid instanceof HTMLSelectElement || firstInvalid instanceof HTMLTextAreaElement) {
+          firstInvalid.reportValidity();
+        }
+        return;
+      }
+
       if (selected.length === 0) {
         setServicesError(true);
+        const svcField = form.querySelector<HTMLElement>('fieldset');
+        if (svcField) svcField.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
