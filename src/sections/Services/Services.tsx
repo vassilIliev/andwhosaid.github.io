@@ -99,34 +99,37 @@ export default function Services() {
         </header>
 
         <div className={styles.grid}>
-          {cards.map((card) => (
-            <article
-              key={card.id}
-              className={`${styles.card} ${styles[`theme_${card.theme}`]}`}
-            >
-              <p className={styles.accent}>{card.accent}</p>
-              <h3 className={styles.title}>
-                <span
-                  className={`${styles.titleLabel} ${card.whitePill ? styles.titleLabelWhite : ''}`}
-                >
-                  {card.title}
-                </span>
-              </h3>
-              <p className={styles.body}>{card.body}</p>
-              {card.learnMore && (
-                <a href={card.href} className={styles.learnMore}>
-                  <span className={styles.learnMoreIcon} aria-hidden="true">↗</span>
-                  Научи повече
-                </a>
-              )}
-              <img
-                src={`${BASE}assets/picture-assets/${card.image}`}
-                alt={card.imageAlt}
-                className={`${styles.cardImage} ${styles[`cardImage_${card.id}`] ?? ''}`}
-                loading="lazy"
-              />
-            </article>
-          ))}
+          {cards.map((card) => {
+            const Wrapper = card.href ? 'a' : 'article';
+            const wrapperProps = card.href
+              ? { href: card.href, className: `${styles.card} ${styles[`theme_${card.theme}`]} ${styles.cardLink}` }
+              : { className: `${styles.card} ${styles[`theme_${card.theme}`]}` };
+            return (
+              <Wrapper key={card.id} {...wrapperProps}>
+                <p className={styles.accent}>{card.accent}</p>
+                <h3 className={styles.title}>
+                  <span
+                    className={`${styles.titleLabel} ${card.whitePill ? styles.titleLabelWhite : ''}`}
+                  >
+                    {card.title}
+                  </span>
+                </h3>
+                <p className={styles.body}>{card.body}</p>
+                {card.learnMore && (
+                  <span className={styles.learnMore}>
+                    <span className={styles.learnMoreIcon} aria-hidden="true">↗</span>
+                    Научи повече
+                  </span>
+                )}
+                <img
+                  src={`${BASE}assets/picture-assets/${card.image}`}
+                  alt={card.imageAlt}
+                  className={`${styles.cardImage} ${styles[`cardImage_${card.id}`] ?? ''}`}
+                  loading="lazy"
+                />
+              </Wrapper>
+            );
+          })}
         </div>
       </div>
     </section>

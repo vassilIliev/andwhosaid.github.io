@@ -11,11 +11,16 @@ export default function Nav() {
   const goToSection = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     close();
-    const targetHash = `#/${id}`;
-    if (window.location.hash === targetHash) {
-      // Already on this anchor — re-trigger scroll manually since hashchange won't fire.
+    if (window.location.hash === `#/${id}`) {
+      // Same hash — hashchange won't fire, scroll manually.
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // On a bio page — section doesn't exist here. Navigate home first.
+        window.location.hash = '/';
+        requestAnimationFrame(() => { window.location.hash = `/${id}`; });
+      }
     } else {
       window.location.hash = `/${id}`;
     }

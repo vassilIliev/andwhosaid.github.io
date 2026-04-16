@@ -1,9 +1,41 @@
+import { useState, useRef, useEffect } from 'react';
 import Star from '../../components/Star/Star';
 import styles from './Hero.module.css';
 
 const BASE = import.meta.env.BASE_URL;
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoState, setVideoState] = useState<'loading' | 'playing' | 'failed'>('loading');
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+
+    const onPlaying = () => setVideoState('playing');
+    const onError = () => setVideoState('failed');
+    const onStalled = () => {
+      setTimeout(() => {
+        if (vid.readyState < 3) setVideoState('failed');
+      }, 8000);
+    };
+
+    vid.addEventListener('playing', onPlaying);
+    vid.addEventListener('error', onError);
+    vid.addEventListener('stalled', onStalled);
+
+    const timeout = setTimeout(() => {
+      if (vid.readyState < 3) setVideoState('failed');
+    }, 12000);
+
+    return () => {
+      vid.removeEventListener('playing', onPlaying);
+      vid.removeEventListener('error', onError);
+      vid.removeEventListener('stalled', onStalled);
+      clearTimeout(timeout);
+    };
+  }, []);
+
   return (
     <section className={styles.hero} id="top">
       <div className={styles.bgDotsTopLeft} aria-hidden="true" />
@@ -30,15 +62,32 @@ export default function Hero() {
 
         <div className={styles.visual}>
           <div className={styles.dotGrid} aria-hidden="true" />
+
+          {videoState === 'loading' && (
+            <div className={styles.videoLoader} aria-hidden="true">
+              <span className={styles.loaderDot} />
+              <span className={styles.loaderDot} />
+              <span className={styles.loaderDot} />
+            </div>
+          )}
+
+          {videoState === 'failed' && (
+            <img
+              src={`${BASE}assets/picture-assets/hero-youth-blob.png`}
+              alt="YOUTH"
+              className={styles.visualImg}
+            />
+          )}
+
           <video
-            className={styles.visualVideo}
+            ref={videoRef}
+            className={`${styles.visualVideo} ${videoState === 'playing' ? styles.videoVisible : styles.videoHidden}`}
             src={`${BASE}assets/hero_video.mp4`}
-            poster={`${BASE}assets/picture-assets/hero-youth-blob.png`}
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
           />
         </div>

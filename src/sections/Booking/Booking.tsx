@@ -126,48 +126,6 @@ export default function Booking() {
               />
             </label>
 
-            <label className={styles.consent}>
-              <input
-                type="checkbox"
-                name="consent"
-                required
-                className={styles.checkbox}
-              />
-              <span>
-                * Съгласявам се предоставените от мен лични данни (име, телефон
-                и имейл) да бъдат използвани единствено с цел осъществяване на
-                контакт във връзка с моето запитване и изготвяне на персонална
-                оферта.
-              </span>
-            </label>
-
-            <input
-              type="text"
-              name="website"
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              className={styles.honeypot}
-            />
-
-            <button
-              type="submit"
-              className={styles.submit}
-              disabled={status === 'sending'}
-            >
-              {status === 'sending' ? 'ИЗПРАЩАНЕ…' : 'НАПРАВИ ЗАПИТВАНЕ'}
-            </button>
-
-            {status === 'sent' && (
-              <p className={styles.statusOk}>
-                Благодарим! Получихме запитването ти и ще се свържем скоро. Можете и да звъннете на телефон - 0885449203.
-              </p>
-            )}
-            {status === 'error' && (
-              <p className={styles.statusErr}>
-                Нещо се обърка. Опитай отново или ни звънни директно - 0885449203.
-              </p>
-            )}
           </div>
 
           <div className={styles.divider} aria-hidden="true" />
@@ -226,6 +184,51 @@ export default function Booking() {
                 className={`${styles.input} ${styles.textarea}`}
               />
             </label>
+          </div>
+
+          <div className={styles.footer}>
+            <label className={styles.consent}>
+              <input
+                type="checkbox"
+                name="consent"
+                required
+                className={styles.checkbox}
+              />
+              <span>
+                * Съгласявам се предоставените от мен лични данни (име, телефон
+                и имейл) да бъдат използвани единствено с цел осъществяване на
+                контакт във връзка с моето запитване и изготвяне на персонална
+                оферта.
+              </span>
+            </label>
+
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className={styles.honeypot}
+            />
+
+            <button
+              type="submit"
+              className={styles.submit}
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? 'ИЗПРАЩАНЕ…' : 'НАПРАВИ ЗАПИТВАНЕ'}
+            </button>
+
+            {status === 'sent' && (
+              <p className={styles.statusOk}>
+                Благодарим! Получихме запитването ти и ще се свържем скоро. Можете и да звъннете на телефон - 0885449203.
+              </p>
+            )}
+            {status === 'error' && (
+              <p className={styles.statusErr}>
+                Нещо се обърка. Опитай отново или ни звънни директно - 0885449203.
+              </p>
+            )}
           </div>
         </form>
       </div>

@@ -6,12 +6,13 @@ import Location from '../sections/Location/Location';
 import Booking from '../sections/Booking/Booking';
 import Footer from '../sections/Footer/Footer';
 
-type Props = { anchor: string | null };
+type Props = { anchor: string | null; seq: number };
 
-export default function Home({ anchor }: Props) {
+export default function Home({ anchor, seq }: Props) {
   useEffect(() => {
-    if (!anchor || anchor === 'top') {
-      if (anchor === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!anchor) return;
+    if (anchor === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
     const raf = requestAnimationFrame(() => {
@@ -19,7 +20,7 @@ export default function Home({ anchor }: Props) {
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     return () => cancelAnimationFrame(raf);
-  }, [anchor]);
+  }, [anchor, seq]);
 
   return (
     <>
