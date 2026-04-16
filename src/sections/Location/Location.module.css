@@ -21,7 +21,7 @@
 
 .badge {
   display: inline-block;
-  background: var(--color-green);
+  background: linear-gradient(to right, var(--color-yellow), var(--color-white));
   color: var(--color-dark);
   padding: 4px 14px;
   border-radius: 8px;

@@ -67,7 +67,12 @@ export default function Booking() {
 
       <div className={styles.inner}>
         <header className={styles.header}>
-          <span className={styles.badge}>Направи Запитване Сега!</span>
+          <span className={styles.badge}>
+            <Star top="-30%" left="-4%" size={28} rotate={-15} />
+            <Star bottom="-20%" left="-6%" size={18} rotate={12} />
+            Направи Запитване Сега!
+            <Star top="-35%" right="-3%" size={24} rotate={8} />
+          </span>
           <p className={styles.tagline}>
             Направи запитване за дата, час и налични места, а ние ще се
             погрижим да ти върнем отговор в най-кратък срок.

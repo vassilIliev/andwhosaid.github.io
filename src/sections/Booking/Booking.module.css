@@ -84,6 +84,7 @@
 }
 
 .badge {
+  position: relative;
   display: inline-block;
   background: var(--color-dark);
   color: var(--color-white);
@@ -92,6 +93,7 @@
   font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   font-weight: 700;
   line-height: 1.2;
+  overflow: visible;
 }
 
 .tagline {
