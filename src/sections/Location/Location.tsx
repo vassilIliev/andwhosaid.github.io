@@ -11,7 +11,11 @@ export default function Location() {
       <Star bottom="8%" right="4%" size={40} rotate={-6} />
       <div className={`container ${styles.inner}`}>
         <header className={styles.header}>
-          <span className={styles.badge}>Локация? Локация. Локация!</span>
+          <span className={styles.badge}>
+            <Star top="-35%" left="-3%" size={26} rotate={10} dark />
+            <Star bottom="-25%" left="-5%" size={16} rotate={-14} dark />
+            Локация? Локация. Локация!
+          </span>
           <a href="#contact" className={styles.headerLink}>
             NOMO del Arte
           </a>

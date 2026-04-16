@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import Star from '../../components/Star/Star';
 import styles from './BioPage.module.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -14,6 +15,7 @@ type Props = {
   gallery?: GalleryItem[];
   galleryAspect?: 'portrait' | 'landscape';
   showDotGrid?: boolean;
+  darkStars?: boolean;
 };
 
 export default function BioPage({
@@ -25,6 +27,7 @@ export default function BioPage({
   gallery,
   galleryAspect = 'portrait',
   showDotGrid,
+  darkStars,
 }: Props) {
   const railRef = useRef<HTMLDivElement>(null);
 
@@ -38,6 +41,15 @@ export default function BioPage({
   return (
     <section className={styles.bio}>
       {showDotGrid && <div className={styles.dotGrid} aria-hidden="true" />}
+
+      <Star top="3%" left="4%" size={52} rotate={-12} dark={darkStars} />
+      <Star top="8%" right="6%" size={28} rotate={14} dark={darkStars} />
+      <Star top="18%" left="48%" size={20} rotate={-8} dark={darkStars} />
+      <Star top="32%" right="3%" size={44} rotate={6} dark={darkStars} />
+      <Star top="45%" left="2%" size={34} rotate={-18} dark={darkStars} />
+      <Star top="60%" right="8%" size={24} rotate={12} dark={darkStars} />
+      <Star bottom="12%" left="6%" size={40} rotate={-10} dark={darkStars} />
+      <Star bottom="4%" right="5%" size={30} rotate={16} dark={darkStars} />
 
       <div className={styles.inner}>
         <a href="#/" className={styles.back}>

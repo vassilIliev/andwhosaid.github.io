@@ -113,7 +113,12 @@ export default function Services() {
       <div className={`${styles.dotGridSmall}`} aria-hidden="true" />
       <div className={styles.inner}>
         <header className={styles.header}>
-          <span className={styles.badge}>От Какво Има Нужда Един Бал?</span>
+          <span className={styles.badge}>
+            <Star top="-30%" left="-2%" size={28} rotate={-15} />
+            <Star bottom="-20%" left="-4%" size={18} rotate={12} />
+            От Какво Има Нужда Един Бал?
+            <Star top="-35%" right="-2%" size={24} rotate={8} />
+          </span>
           <p className={styles.tagline}>
             Услугите, които биха направили твоят ден специален и незабравим.
           </p>

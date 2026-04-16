@@ -33,6 +33,7 @@ export default function Photographer() {
             alt: 'Портрет на Георги Сиркатов',
           }}
           gallery={gallery}
+          darkStars
         />
       </main>
       <Footer />
