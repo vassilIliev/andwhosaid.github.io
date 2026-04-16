@@ -65,6 +65,16 @@
   object-fit: cover;
   display: block;
   border-radius: var(--radius-lg);
+  transition: transform 500ms ease;
+}
+
+.imageWrap:hover .image {
+  transform: scale(1.04);
+}
+
+.imageWrap {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 
 .content {
@@ -93,6 +103,12 @@
   height: 10px;
   background: var(--color-pink);
   transform: translate(-50%, -50%) rotate(45deg);
+  animation: diamondPulse 2s ease-in-out infinite;
+}
+
+@keyframes diamondPulse {
+  0%, 100% { opacity: 1; transform: translate(-50%, -50%) rotate(45deg) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) rotate(45deg) scale(1.3); }
 }
 
 .column {
@@ -121,6 +137,7 @@
   font-size: 0.9375rem;
   text-decoration: none;
   width: max-content;
+  transition: opacity 200ms ease, transform 200ms ease;
 }
 
 .linkPink {
@@ -133,6 +150,7 @@
 
 .inlineLink:hover {
   opacity: 0.85;
+  transform: translateX(3px);
 }
 
 /* Vertical rotated "NOMO" on right edge, subtle dark grey */

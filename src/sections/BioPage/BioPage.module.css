@@ -34,7 +34,12 @@
 .back:focus-visible {
   background: var(--color-dark);
   color: var(--color-white);
-  transform: translateY(-2px);
+  transform: translateX(-4px);
+}
+
+.back:active {
+  transform: translateX(-2px) scale(0.96);
+  transition-duration: 80ms;
 }
 
 .hero {
@@ -59,6 +64,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 500ms ease;
+}
+
+.portraitWrap:hover .portrait {
+  transform: scale(1.04);
 }
 
 .copy {
@@ -125,6 +135,13 @@
 .cta:focus-visible {
   background: var(--color-pink);
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 0, 84, 0.3);
+}
+
+.cta:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: none;
+  transition-duration: 80ms;
 }
 
 .dotGrid {
@@ -192,6 +209,12 @@
   background: var(--color-pink);
   border-color: var(--color-pink);
   color: var(--color-white);
+  transform: scale(1.1);
+}
+
+.arrow:active {
+  transform: scale(0.95);
+  transition-duration: 80ms;
 }
 
 .galleryRail {
@@ -238,6 +261,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 400ms ease;
+}
+
+.galleryItem:hover img {
+  transform: scale(1.06);
 }
 
 @media (max-width: 900px) {

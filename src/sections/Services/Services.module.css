@@ -53,7 +53,7 @@
   position: relative;
   border: 1px solid var(--color-dark);
   border-radius: 38px;
-  box-shadow: 0 5px 0 0 var(--color-dark);
+  box-shadow: 3px 4px 0 0 var(--color-dark);
   padding: var(--space-5) var(--space-6);
   aspect-ratio: 600 / 305;
   min-height: 180px;
@@ -61,6 +61,43 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 0 0 var(--color-dark);
+}
+
+.card:active {
+  transform: translateY(-1px);
+  box-shadow: 3px 5px 0 0 var(--color-dark);
+  transition-duration: 80ms;
+}
+
+.cardInView {
+  transform: translateY(-4px);
+  box-shadow: 4px 8px 0 0 var(--color-dark);
+}
+
+.cardInView .cardImage {
+  transform: translateY(-50%) scale(1.06) rotate(2deg);
+}
+
+.cardInView .cardImage_photographer {
+  transform: translateY(-50%) rotate(-6deg) scale(1.08);
+}
+
+.cardInView .cardImage_videographer {
+  transform: translateY(-50%) rotate(-4deg) scale(1.08);
+}
+
+.cardInView .learnMore {
+  gap: 12px;
+}
+
+.cardInView .learnMoreIcon {
+  transform: translate(2px, -2px);
 }
 
 .cardLink {
@@ -153,6 +190,11 @@
   color: inherit;
   z-index: 2;
   width: max-content;
+  transition: gap 250ms ease;
+}
+
+.card:hover .learnMore {
+  gap: 12px;
 }
 
 .learnMore:hover {
@@ -169,6 +211,11 @@
   background: var(--color-dark);
   color: var(--color-white);
   font-size: 0.75rem;
+  transition: transform 250ms ease;
+}
+
+.card:hover .learnMoreIcon {
+  transform: translate(2px, -2px);
 }
 
 .theme_dark .learnMoreIcon {
@@ -188,6 +235,11 @@
   object-fit: contain;
   pointer-events: none;
   z-index: 1;
+  transition: transform 350ms ease;
+}
+
+.card:hover .cardImage {
+  transform: translateY(-50%) scale(1.06) rotate(2deg);
 }
 
 .cardImage_photographer {
@@ -199,12 +251,20 @@
   filter: brightness(0);
 }
 
+.card:hover .cardImage_photographer {
+  transform: translateY(-50%) rotate(-6deg) scale(1.08);
+}
+
 .cardImage_videographer {
   width: 75%;
   max-width: 420px;
   max-height: 120%;
   right: -8%;
   transform: translateY(-50%) rotate(-8deg);
+}
+
+.card:hover .cardImage_videographer {
+  transform: translateY(-50%) rotate(-4deg) scale(1.08);
 }
 
 .dotGridLarge {

@@ -70,9 +70,15 @@
   text-decoration: none;
 }
 
+a.value {
+  transition: color 200ms ease, transform 200ms ease;
+  display: inline-block;
+}
+
 a.value:hover,
 a.value:focus-visible {
   color: var(--color-pink);
+  transform: translateX(3px);
 }
 
 .copyright {

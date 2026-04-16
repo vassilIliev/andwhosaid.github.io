@@ -9,6 +9,26 @@
   z-index: 0;
   filter: drop-shadow(2px 3px 0 rgba(25, 26, 35, 0.12));
   will-change: transform;
+  animation: starFloat 6s ease-in-out infinite;
+}
+
+.star:nth-child(2n) {
+  animation-duration: 5s;
+  animation-delay: -1.5s;
+}
+
+.star:nth-child(3n) {
+  animation-duration: 7s;
+  animation-delay: -3s;
+}
+
+@keyframes starFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; }
 }
 
 @media (max-width: 860px) {

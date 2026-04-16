@@ -154,7 +154,7 @@
   font-size: 1rem;
   line-height: 1.4;
   outline: none;
-  transition: box-shadow 120ms ease, border-color 120ms ease;
+  transition: box-shadow 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
 
 .input::placeholder {
@@ -164,6 +164,7 @@
 .input:focus-visible {
   border-color: var(--color-pink);
   box-shadow: 0 0 0 3px rgba(255, 0, 84, 0.18);
+  transform: scale(1.01);
 }
 
 .textarea {
@@ -200,6 +201,13 @@
 .checkbox:checked {
   background: var(--color-pink);
   border-color: var(--color-pink);
+  animation: checkBounce 300ms ease;
+}
+
+@keyframes checkBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25); }
+  100% { transform: scale(1); }
 }
 
 .checkbox:checked::after {
@@ -236,6 +244,13 @@
   background: var(--color-pink);
   border-color: var(--color-pink);
   transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 0, 84, 0.3);
+}
+
+.submit:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: none;
+  transition-duration: 80ms;
 }
 
 .footer {
@@ -268,6 +283,15 @@
   gap: 12px;
   font-size: 0.9375rem;
   cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.checkRow:hover {
+  transform: translateX(4px);
+}
+
+.checkRow:active {
+  transform: translateX(2px) scale(0.98);
 }
 
 @media (max-width: 860px) {

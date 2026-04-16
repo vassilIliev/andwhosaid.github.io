@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Star from '../../components/Star/Star';
 import styles from './Services.module.css';
 
@@ -71,7 +72,7 @@ const cards: Card[] = [
     theme: 'pink',
     accent: 'видео',
     title: 'Видеограф',
-    body: 'Тази история трябва да е преживяна и показана за поколения след.',
+    body: 'Тази история трябва да я видят всички. Твоят специален ден ще се превърне в професионален Reel.',
     image: 'video.png',
     imageAlt: 'Видео',
     href: '#/videographer',
@@ -81,6 +82,26 @@ const cards: Card[] = [
 ];
 
 export default function Services() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid || !window.matchMedia('(hover: none)').matches) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle(styles.cardInView, entry.isIntersecting);
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const cards = grid.querySelectorAll(`.${styles.card}`);
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className={styles.services} id="services">
       <Star top="3%" left="3%" size={52} rotate={-15} />
@@ -98,7 +119,7 @@ export default function Services() {
           </p>
         </header>
 
-        <div className={styles.grid}>
+        <div className={styles.grid} ref={gridRef}>
           {cards.map((card) => {
             const Wrapper = card.href ? 'a' : 'article';
             const wrapperProps = card.href
